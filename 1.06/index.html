@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1160">
+    <title>겨울방학 집중관리반 (Final Revision)</title>
+    <style>
+        /* 폰트: Noto Sans KR */
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
+
+        body {
+            margin: 0;
+            padding: 40px;
+            background-color: #dcdcdc;
+            font-family: 'Noto Sans KR', sans-serif;
+            display: flex;
+            gap: 50px;
+            justify-content: center;
+            flex-wrap: wrap;
+            min-width: 1160px;
+        }
+
+        /* 카드 공통 스타일 (1080 x 1350) */
+        .card {
+            width: 1080px;
+            height: 1350px;
+            background-color: #ffffff;
+            border-radius: 0; /* 각진 모서리 */
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-sizing: border-box;
+            box-shadow: 0 0 0 1px rgba(0,0,0,0.05), 0 15px 30px rgba(0,0,0,0.1); 
+        }
+
+        .container {
+            padding: 100px 80px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-sizing: border-box;
+        }
+
+        /* 텍스트 스타일 */
+        h1 {
+            font-size: 84px;
+            font-weight: 900;
+            color: #000;
+            line-height: 1.15;
+            margin: 0 0 30px 0;
+            letter-spacing: -2.5px;
+            word-break: keep-all;
+        }
+        
+        .sub-title {
+            font-size: 34px;
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 50px;
+            line-height: 1.6;
+            letter-spacing: -0.5px;
+        }
+
+        /* 배지 스타일 */
+        .badge {
+            display: inline-block;
+            padding: 8px 0;
+            border-bottom: 4px solid #000;
+            color: #000;
+            font-size: 24px;
+            font-weight: 900;
+            margin-bottom: 35px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* --- 2페이지용 박스 스타일 (User Requested) --- */
+        .rigid-box {
+            background-color: #fff;
+            border: 3px solid #000; /* 굵은 검은 테두리 */
+            padding: 45px;
+            margin-bottom: 30px;
+            border-radius: 0;
+        }
+        
+        .box-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .box-title::before {
+            content: '■'; 
+            font-size: 18px;
+            color: #000;
+        }
+
+        .box-desc {
+            font-size: 36px;
+            font-weight: 400;
+            color: #222;
+            line-height: 1.5;
+            letter-spacing: -1px;
+        }
+        .box-desc strong {
+            font-weight: 900;
+            color: #000;
+            text-decoration: underline;
+            text-decoration-thickness: 2px;
+            text-underline-offset: 5px;
+        }
+
+        /* --- 3페이지용 리포트 스타일 --- */
+        .report-layout { display: flex; gap: 40px; height: 100%; margin-top: 20px; }
+        .report-left { flex: 0.9; display: flex; flex-direction: column; justify-content: center; }
+        .small-desc { font-size: 34px; color: #444; font-weight: 500; line-height: 1.5; margin-bottom: 50px; word-break: keep-all; }
+        
+        .check-item-compact { display: flex; align-items: center; padding: 25px 0; border-bottom: 2px solid #ddd; }
+        .check-item-compact:last-child { border-bottom: none; }
+        .check-icon-compact { color: #000; font-size: 36px; margin-right: 25px; font-weight: 900; }
+        .check-text-compact { font-size: 32px; color: #000; font-weight: 500; letter-spacing: -1px; }
+
+        .report-right { flex: 1.1; border: 3px solid #000; display: flex; flex-direction: column; align-items: stretch; overflow: hidden; }
+
+        /* --- 4페이지용 가격 스타일 (User Requested) --- */
+        .price-area {
+            margin-top: 50px;
+            padding-top: 40px;
+            border-top: 4px solid #000; /* 상단 굵은 선 */
+            text-align: right;
+        }
+        .price-label { font-size: 30px; color: #333; font-weight: 700; margin-bottom: 15px;}
+        .price-value { font-size: 90px; color: #000; font-weight: 900; letter-spacing: -3px; line-height: 1; }
+        .price-sub { font-size: 24px; color: #555; margin-top: 25px; font-weight: 500; line-height: 1.4;}
+
+        /* --- 5페이지용 커리큘럼 테이블 --- */
+        .rigid-table {
+            width: 100%;
+            border-collapse: collapse;
+            border-top: 3px solid #000;
+            border-bottom: 3px solid #000;
+            margin-top: 40px;
+        }
+        .rigid-table th {
+            text-align: left;
+            font-size: 26px;
+            color: #000;
+            padding: 25px 20px;
+            border-bottom: 2px solid #000;
+            font-weight: 900;
+            background-color: #f4f4f4;
+        }
+        .rigid-table td {
+            padding: 30px 20px;
+            font-size: 32px;
+            color: #333;
+            border-bottom: 1px solid #ccc;
+            font-weight: 500;
+        }
+        .rigid-table tr:last-child td { border-bottom: none; }
+        .week-num { font-weight: 900; color: #000; }
+
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <div class="container">
+            <div style="margin-top: 80px;">
+                <div class="badge">WINTER CLASS</div>
+                <h1>
+                    겨울방학 수학<br>
+                    집중 관리반 모집
+                </h1>
+                <p class="sub-title">
+                    예비 고2 / 고3 대상<br>
+                    <strong style="color:#000; font-weight: 800; border-bottom: 2px solid #000;">01/05</strong>~  모집 시작.
+                </p>
+            </div>
+            
+            <div></div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="container">
+            <div>
+                <div class="badge">CLASS INFO</div>
+                <h1>
+                    학습 시스템 및<br>
+                    운영 안내
+                </h1>
+                
+                <div class="rigid-box">
+                    <div class="box-title">수업 일정</div>
+                    <div class="box-desc">
+                        <strong>주 2회 진행</strong> (주당 8시간)<br>
+                        <span style="font-size: 26px; color: #555;">* 요일 및 시간은 학생 및 학부모와 협의하여 결정</span>
+                    </div>
+                </div>
+
+                <div class="rigid-box">
+                    <div class="box-title">수업 구성</div>
+                    <div class="box-desc">
+                        <strong>하루 4시간 몰입 시스템</strong><br>
+                        (2시간 핵심 강의 + 2시간 클리닉)
+                    </div>
+                </div>
+
+                <div class="rigid-box" style="margin-bottom: 0;">
+                    <div class="box-title">강의 장소</div>
+                    <div class="box-desc">
+                        <strong>동안구 시민대로 187, 해와달 스터디룸</strong><br>
+                        <span style="font-size: 26px; color: #555;">(동안구청 맞은편, 범계역 사거리 앞 건물)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="container">
+            <div>
+                <div class="badge">CLINIC SYSTEM</div>
+                <h1>
+                    클리닉 시간엔<br>
+                    무엇을 하나요?
+                </h1>
+                
+                <div style="margin-top: 50px; margin-bottom: 50px;">
+                    <div class="check-item-compact">
+                        <div class="check-icon-compact">✓</div>
+                        <div class="check-text-compact">매 수업 <b>복습 테스트</b> 진행</div>
+                    </div>
+                    <div class="check-item-compact">
+                        <div class="check-icon-compact">✓</div>
+                        <div class="check-text-compact">당일 배운 내용 <b>완벽 소화</b></div>
+                    </div>
+                    <div class="check-item-compact">
+                        <div class="check-icon-compact">✓</div>
+                        <div class="check-text-compact">1:1 질의응답 및 <b>오답 케어</b></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="report-layout" style="margin-top: 0;">
+                <div class="report-left">
+                    <div class="small-desc" style="margin-bottom: 0;">
+                        <strong style="color:#000; font-weight:800;">매 수업</strong>마다 상세 리포트를<br>학부모님께 전송합니다.
+                    </div>
+                </div>
+
+                <div class="report-right">
+                    <div style="flex: 1; overflow: hidden; position: relative; background-color: #eee;">
+                        <img src="report1.jpg" alt="관리 리포트 예시" style="width: 100%; height: 100%; object-fit: cover; object-position: top;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="container">
+            
+            <div>
+                <div class="badge">REGISTRATION</div>
+                <h1>
+                    등록은<br>
+                    어떻게 하나요?
+                </h1>
+                
+                <div class="sub-title">
+                    저희 <b>카카오톡 채널</b>로 들어오셔서<br>
+                    '신청' 버튼을 누르시면 안내해 드립니다.
+                    <br><br>
+                    학생과 상담 후에 세부 사항을 수정해서<br>
+                    <b>맞춤 커리큘럼</b>을 안내드리고 있습니다.
+                </div>
+            </div>
+
+            <div style="margin-top: 50px;">
+
+                <div class="price-area" style="margin-top: 0; padding-top: 30px;">
+                    <div class="price-label">수업료 (1회 4시간 기준)</div>
+                    <div class="price-value">120,000원</div>
+                    <div class="price-sub">
+                        1시간당 3만원으로, 시중의<br>
+                        대학생 과외 수준 가격입니다.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="container">
+            <div>
+                <div class="badge">CURRICULUM</div>
+                
+                <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 30px;">
+                    <h1 style="margin: 0;">
+                        겨울방학<br>
+                        상세 진도 계획
+                    </h1>
+                    
+                    <div style="text-align: right; font-size: 24px; color: #888; font-weight: 500; line-height: 1.4; padding-bottom: 10px;">
+                        * 이는 학생 상황을 고려하여<br>
+                        변경될 수 있습니다.
+                    </div>
+                </div>
+                
+                <table class="rigid-table">
+                    <colgroup>
+                        <col style="width: 20%;">
+                        <col style="width: 80%;">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th>주차</th>
+                            <th>학습 주제</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="week-num">01</td>
+                            <td>지수함수와 로그함수</td>
+                        </tr>
+                        <tr>
+                            <td class="week-num">02</td>
+                            <td>삼각함수의 이해</td>
+                        </tr>
+                        <tr>
+                            <td class="week-num">03</td>
+                            <td>수열의 극한</td>
+                        </tr>
+                        <tr>
+                            <td class="week-num">04</td>
+                            <td>실전 모의고사 풀이</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div style="background-color: #000; color: #fff; padding: 50px; text-align: center; margin-top: 50px;">
+                <div style="font-size: 28px; margin-bottom: 15px; opacity: 0.8;">수강 상담 및 문의</div>
+                <div style="font-size: 48px; font-weight: 900;">프로필 링크 참조</div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
