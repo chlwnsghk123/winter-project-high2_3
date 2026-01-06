@@ -2,7 +2,8 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>겨울방학 집중관리반 (Mobile)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>예비 고2/고3 대상 겨울방학 집중관리반</title>
     <style>
         /* 폰트: Noto Sans KR */
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
@@ -25,9 +26,9 @@
             line-height: 1.5;
         }
 
-        /* 전체 컨테이너 (모바일 폭 제한) */
+        /* 전체 컨테이너 */
         .mobile-container {
-            max-width: 600px; /* 태블릿/PC에서도 너무 안 퍼지게 */
+            max-width: 600px; 
             margin: 0 auto;
             display: flex;
             flex-direction: column;
@@ -39,19 +40,28 @@
             background-color: var(--card-bg);
             padding: 40px 25px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            /* 모바일에서도 깔끔한 구획감을 위해 유지 */
             border-bottom: 2px solid #ddd; 
         }
         .card:last-child { border-bottom: none; }
 
-        /* 타이포그래피 (모바일 최적화) */
+        /* 타이포그래피 */
         h1 {
-            font-size: 32px; /* 84px -> 32px */
+            font-size: 32px;
             font-weight: 900;
             line-height: 1.25;
             margin: 0 0 20px 0;
             letter-spacing: -1px;
             word-break: keep-all;
+        }
+        
+        /* 제목 옆 작은 회색 텍스트 (예비 고2 등) */
+        h1 span {
+            display: block;
+            font-size: 20px;
+            font-weight: 500;
+            color: #666;
+            margin-top: 5px;
+            letter-spacing: -0.5px;
         }
 
         .badge {
@@ -74,13 +84,7 @@
             word-break: keep-all;
         }
 
-        .highlight-date {
-            color: #000;
-            font-weight: 800;
-            border-bottom: 2px solid #000;
-        }
-
-        /* 박스 스타일 (Class Info) */
+        /* 박스 스타일 */
         .rigid-box {
             border: var(--border-heavy);
             padding: 25px 20px;
@@ -162,7 +166,6 @@
             border: var(--border-heavy);
             background-color: #eee;
             overflow: hidden;
-            /* 이미지 비율 유지 등을 위해 높이 설정 */
             min-height: 200px; 
         }
         .report-img-box img {
@@ -182,32 +185,63 @@
         .price-value { font-size: 42px; font-weight: 900; color: #000; letter-spacing: -1px; line-height: 1.1; }
         .price-sub { font-size: 13px; color: #666; margin-top: 10px; font-weight: 400; line-height: 1.4; }
 
-        /* 커리큘럼 테이블 */
-        .rigid-table {
-            width: 100%;
-            border-collapse: collapse;
-            border-top: var(--border-heavy);
-            border-bottom: var(--border-heavy);
-            margin-top: 20px;
+        /* 커리큘럼 스타일 */
+        .curri-box {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-left: 6px solid #000;
+            padding: 25px 20px;
+            margin-top: 10px; /* 제목과 간격 */
         }
-        .rigid-table th {
-            text-align: left;
-            background-color: #f4f4f4;
+        
+        .curri-label {
+            font-size: 14px;
+            color: #666;
+            font-weight: 700;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .curri-main {
+            font-size: 24px; /* 조금 더 강조 */
             font-weight: 800;
-            padding: 12px 10px;
-            font-size: 15px;
-            border-bottom: 2px solid #000;
+            color: #000;
+            line-height: 1.35;
+            margin-bottom: 20px;
+            word-break: keep-all;
         }
-        .rigid-table td {
-            padding: 15px 10px;
+        .curri-main span {
+            font-size: 18px;
+            font-weight: 400;
+            color: #444;
+            display: block; /* 줄바꿈 */
+            margin-top: 5px;
+        }
+
+        .curri-list {
+            margin-top: 20px;
+            border-top: 1px solid #ddd;
+            padding-top: 20px;
+        }
+        
+        .curri-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 12px;
             font-size: 16px;
-            font-weight: 500;
-            border-bottom: 1px solid #ddd;
             color: #333;
+            line-height: 1.5;
+            word-break: keep-all;
         }
-        .rigid-table tr:last-child td { border-bottom: none; }
-        .week-col { width: 15%; text-align: center; font-weight: 900; color: #000; }
-        .topic-col { width: 85%; }
+        .curri-item:last-child { margin-bottom: 0; }
+        .curri-dot {
+            color: #000;
+            font-size: 14px;
+            margin-right: 12px;
+            margin-top: 4px;
+            flex-shrink: 0;
+        }
+
 
         /* 문의 버튼 (하단) */
         .cta-box {
@@ -231,7 +265,6 @@
             <h1>겨울방학 수학<br>집중 관리반 모집</h1>
             <p class="sub-title">
                 예비 고2 / 고3 대상<br>
-                <span class="highlight-date">01/05</span>부터 모집 시작
             </p>
         </div>
 
@@ -259,7 +292,7 @@
                 <div class="box-title">강의 장소</div>
                 <div class="box-desc">
                     <strong>동안구 시민대로 187,<br>해와달 스터디룸</strong>
-                    <span class="box-sub">(동안구청 맞은편, 범계역 사거리)</span>
+                    <span class="box-sub">(스터디룸을 대관해 진행합니다, 범계역 도보 2분거리입니다.)</span>
                 </div>
             </div>
         </div>
@@ -314,48 +347,50 @@
             </div>
         </div>
 
-        <div class="card" style="border-bottom: none;">
-            <div class="badge">CURRICULUM</div>
-            <h1>상세 진도 계획</h1>
-            <div style="font-size: 13px; color: #888; margin-bottom: 10px;">
-                * 학생 상황에 따라 변경될 수 있습니다.
+        <div class="card">
+            <div class="badge">CURRICULUM - 1</div>
+            <h1>상세 진도 계획<br><span>(예비 고2)</span></h1>
+            
+            <div class="curri-box">
+                <span class="curri-label">진도 구성</span>
+                <div class="curri-main">
+                    수 I + 수 II 병행<br>
+                    <span>(또는 수 I 집중)</span>
+                </div>
+                <div class="curri-list">
+                    <div class="curri-item">
+                        <span class="curri-dot">●</span>
+                        <div>개별 상황에 맞추어 진도를 설정합니다.</div>
+                    </div>
+                    <div class="curri-item">
+                        <span class="curri-dot">●</span>
+                        <div>학업 성취도 수준에 따라 결정합니다.</div>
+                    </div>
+                </div>
             </div>
-
-            <table class="rigid-table">
-                <colgroup>
-                    <col style="width: 15%;">
-                    <col style="width: 85%;">
-                </colgroup>
-                <thead>
-                    <tr>
-                        <th class="week-col">주</th>
-                        <th>학습 주제</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="week-col">01</td>
-                        <td>지수함수와 로그함수</td>
-                    </tr>
-                    <tr>
-                        <td class="week-col">02</td>
-                        <td>삼각함수의 이해</td>
-                    </tr>
-                    <tr>
-                        <td class="week-col">03</td>
-                        <td>수열의 극한</td>
-                    </tr>
-                    <tr>
-                        <td class="week-col">04</td>
-                        <td>실전 모의고사 풀이</td>
-                    </tr>
-                </tbody>
-            </table>
         </div>
 
-        <div class="cta-box">
-            <div class="cta-sub">수강 상담 및 문의</div>
-            <div class="cta-main">프로필 링크 참조</div>
+        <div class="card" style="border-bottom: none;">
+            <div class="badge">CURRICULUM - 2</div>
+            <h1>상세 진도 계획<br><span>(예비 고3)</span></h1>
+
+            <div class="curri-box">
+                <span class="curri-label">진도 구성</span>
+                <div class="curri-main">
+                    공통(수 I, II) + 선택<br>
+                    <span>(미적분 / 확통)</span>
+                </div>
+                <div class="curri-list">
+                    <div class="curri-item">
+                        <span class="curri-dot">●</span>
+                        <div>수능 대비 기출 총정리</div>
+                    </div>
+                    <div class="curri-item">
+                        <span class="curri-dot">●</span>
+                        <div>실전 개념 체화 및 문제풀이</div>
+                    </div>
+                </div>
+            </div>
         </div>
 
     </div>
